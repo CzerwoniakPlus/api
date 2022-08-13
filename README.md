@@ -167,7 +167,7 @@ Project Link: [https://github.com/CzerwoniakPlus/api](https://github.com/Czerwon
 [issues-shield]: https://img.shields.io/github/issues/CzerwoniakPlus/api.svg?style=for-the-badge
 [issues-url]: https://github.com/CzerwoniakPlus/api/issues
 [license-shield]: https://img.shields.io/github/license/CzerwoniakPlus/api.svg?style=for-the-badge
-[license-url]: https://github.com/CzerwoniakPlus/api/blob/master/LICENSE
+[license-url]: https://github.com/CzerwoniakPlus/api/blob/main/LICENSE
 [product-screenshot]: https://lydia.czerwoniakplus.pl/assets/CzerwoniakPlus/CzerwoniakPlus-Web-Mockup.png
 <!---->
 [Node.js]: https://img.shields.io/badge/-Node.js-333333?style=for-the-badge&logo=node.js
