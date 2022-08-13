@@ -107,3 +107,6 @@ dist
 config/firebase/serviceAccount.json
 config/keys/certificate.pem
 config/keys/privatekey.pem
+
+# TS Build files
+build/

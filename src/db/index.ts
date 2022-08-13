@@ -1,10 +1,11 @@
 import admin from "firebase-admin";
 import serviceAccount from "../../config/firebase/serviceAccount.json";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
-  //databaseURL: process.env.firebase_db_url,
-  databaseURL: "https://czerwoniakplusplus-default-rtdb.europe-west1.firebasedatabase.app/",
+  databaseURL: process.env.firebase_db_url,
 });
 
 

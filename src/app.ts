@@ -15,7 +15,6 @@ import cron from "node-cron";
 import querystring from "querystring";
 import bodyParser from "body-parser";
 import routes from "./routes";
-import getCurrentLesson from "./utils/lessonTimeCounter";
 
 dotenv.config();
 
