@@ -19,7 +19,7 @@
 <h3 align="center">CzerwoniakPlus API</h3>
 
   <p align="center">
-    🌊 A fresh look on original CzerwoniakPlus's API, using TypeScript and ExpressJS
+    🌊 A fresh look on original CzerwoniakPlus's API, using TypeScript and ExpressJS (work in progress)
     <br />
     <br />
     <a href="https://czerwoniakplus.pl">Open CzerwoniakPlus in browser</a>
