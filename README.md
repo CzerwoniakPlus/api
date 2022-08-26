@@ -108,6 +108,7 @@ Make sure to use Node.js version of at least v16.15.0 and install newest version
 3. Copy `.env.example` file and rename it as `.env`. Replace values with necessary data
    ```env
    firebase_db_url = FIREBASE_DB_URL_HERE
+   auth_secret = SECRET_PHRASE_TO_AUTHORIZE_POST_REQUESTS
    ```
 4. Create a `config` directory in the root of project.
    * Make two subdirectories named: `firebase` and `keys`
