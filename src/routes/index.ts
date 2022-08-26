@@ -7,6 +7,7 @@ import lessonHoursController from '../controller/lessonHours';
 import announcementsController from '../controller/announcements';
 import lessonController from '../controller/lesson';
 import vacationController from '../controller/vacation';
+import schoolNewsController from '../controller/schoolNews';
 
 const router = express.Router();
 
@@ -21,5 +22,6 @@ router.get('/announcements', announcementsController.getAnnouncements);
 router.post('/announcements', announcementsController.insertAnnouncement);
 router.get('/lesson', lessonController);
 router.get('/vacation', vacationController);
+router.get('/news', schoolNewsController);
 
 export = router;

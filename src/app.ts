@@ -15,6 +15,7 @@ import cron from "node-cron";
 import querystring from "querystring";
 import bodyParser from "body-parser";
 import routes from "./routes";
+import refreshNews from "./utils/newsDownloader";
 
 dotenv.config();
 
@@ -56,4 +57,10 @@ const SERVER: https.Server = https.createServer(
  */
 SERVER.listen(PORT, () => {
   console.log(`HTTPS server listening on port ${PORT}`);
+  console.log("Refreshing news");
+  refreshNews();
+  cron.schedule("*/5 * * * *", () => {
+    console.log("Refreshing news");
+    refreshNews();
+  })
 });
