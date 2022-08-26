@@ -59,8 +59,9 @@ SERVER.listen(PORT, () => {
   console.log(`HTTPS server listening on port ${PORT}`);
   console.log("Refreshing news");
   refreshNews();
-  cron.schedule("*/5 * * * *", () => {
-    console.log("Refreshing news");
-    refreshNews();
-  })
+});
+
+cron.schedule("*/5 * * * *", () => {
+  console.log("Refreshing news");
+  refreshNews();
 });
