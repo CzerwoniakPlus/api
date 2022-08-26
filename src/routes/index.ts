@@ -4,6 +4,7 @@ import statusController from '../controller/status';
 import homeController from '../controller/home';
 import luckyNumberController from '../controller/luckyNumber';
 import lessonHoursController from '../controller/lessonHours';
+import announcementsController from '../controller/announcements';
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.get('/luckynumber', luckyNumberController.getLuckyNumber);
 router.post('/luckynumber', luckyNumberController.setLuckyNumber);
 router.get('/lessonhours', lessonHoursController.getLessonHours);
 router.post('/shortlessons', lessonHoursController.setShortenedLessonsStatus);
+router.get('/announcements', announcementsController.getAnnouncements);
 
 export = router;

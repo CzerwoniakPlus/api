@@ -11,7 +11,7 @@ const getHomeData = async (req: Request, res: Response, next: NextFunction) => {
     .then((announcements) => {
       let announcementsArr: Object[] = [];
       announcements.forEach((e) => {
-        //@ts-ignore - TODO: fix types for firebase
+        //@ts-ignore
         let day = moment.unix(e.val().time);
         announcementsArr.push({
           //@ts-ignore
