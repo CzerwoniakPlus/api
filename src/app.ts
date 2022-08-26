@@ -7,15 +7,13 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
-import btoa from "btoa";
-import axios from "axios";
 import fs from "fs";
 import https from "https";
 import cron from "node-cron";
-import querystring from "querystring";
 import bodyParser from "body-parser";
 import routes from "./routes";
 import refreshNews from "./utils/newsDownloader";
+import getTimetableURL from "./utils/timetableURLExtractor";
 
 dotenv.config();
 
