@@ -22,11 +22,15 @@ const calculateLastFridayForMonth = (monthMoment: moment.Moment) => {
 
 /**
  * Function that calculates how long students have to wait for the next vacation.
- * @returns an object containing the total days from start to end of the school year, 
+ * @returns an object containing the total days from start to end of the school year,
  * days left to vacation and a percentage of elapsed time (for usage in a progress bar)
+ * or if the vacation is currently in progress returns 0 remaining days and 100% elapsed time.
  */
 const calculateVacation = () => {
   const now = moment().utc().local();
+  if (now.month() === 6 || now.month() === 7) {
+    return { daysTotal: 0, daysLeft: 0, procent: 1 };
+  }
   const start = moment().year(now.year()).month(8).date(1).day(8);
   if (start.date() > 7) start.day(-6);
   const end = calculateLastFridayForMonth(
