@@ -26,7 +26,7 @@ const setShortenedLessonsStatus = (
   if (typeof status === "undefined") return res.sendStatus(400);
   Database.setShortenedLessonsStatus(isShortened)
     .then(() => {
-      res.sendStatus(200);
+      res.sendStatus(201);
     })
     .catch((error) => {
       next(error);

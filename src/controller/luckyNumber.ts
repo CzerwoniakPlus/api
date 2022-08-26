@@ -60,7 +60,7 @@ const setLuckyNumber = async (
     // ---------------------------------------------------------------
     Database.setLuckyNumber(-1, "Miłego wypoczynku!")
       .then(() => {
-        return res.sendStatus(200);
+        return res.sendStatus(201);
       })
       .catch((error) => {
         next(error);
@@ -68,7 +68,7 @@ const setLuckyNumber = async (
   } else {
     Database.setLuckyNumber(number, message)
       .then(() => {
-        return res.sendStatus(200);
+        return res.sendStatus(201);
       })
       .catch((error) => {
         next(error);
