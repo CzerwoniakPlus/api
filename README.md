@@ -61,8 +61,7 @@
 ## About The Project
 
 This repository contains the newest version on CzerwoniakPlus's API. It is a completly fresh look on what we have done with the old (private and archived) one.
-Unfortunately, due to signed contracts, we will be unable to share some parts of the project, e.g. the online school register integration. Besides that, 
-we are more than happy to accept any feedback from you!
+We are more than happy to accept any feedback from you!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
