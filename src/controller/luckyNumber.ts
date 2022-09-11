@@ -68,7 +68,17 @@ const setLuckyNumber = async (
   } else {
     Database.setLuckyNumber(number, message)
       .then(() => {
-        return res.sendStatus(201);
+        Database.sendNotification(
+          "Szczęśliwy numerek",
+          `${message} ${number}`,
+          "luckyNumberV2"
+        )
+          .then(() => {
+            return res.sendStatus(201);
+          })
+          .catch((error) => {
+            next(error);
+          });
       })
       .catch((error) => {
         next(error);

@@ -1,6 +1,7 @@
 import admin from "firebase-admin";
 import serviceAccount from "../../config/firebase/serviceAccount.json";
 import * as dotenv from "dotenv";
+import { getMessaging, MessagingTopicResponse } from "firebase-admin/messaging";
 dotenv.config();
 
 admin.initializeApp({
@@ -8,12 +9,12 @@ admin.initializeApp({
   databaseURL: process.env.firebase_db_url,
 });
 
-
-
 const db = admin.database();
 const announcementsRef = db.ref("news");
 const luckyNumberRef = db.ref("luckyNumber");
 const shortLessonsRef = db.ref("shortLessons");
+
+const messaging = getMessaging();
 
 async function insertAnnouncement(
   content: string,
@@ -129,11 +130,34 @@ async function setShortenedLessonsStatus(status: boolean): Promise<void> {
   });
 }
 
-export default {
-    insertAnnouncement,
-    getAnnouncements,
-    setLuckyNumber,
-    getLuckyNumber,
-    getShortenedLessonsStatus,
-    setShortenedLessonsStatus,
+async function sendNotification(
+  title: string,
+  body: string,
+  topic: string
+): Promise<MessagingTopicResponse> {
+  return new Promise((resolve, reject) => {
+    messaging
+      .sendToTopic(topic, {
+        notification: {
+          title: title,
+          body: body,
+        },
+      })
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
 }
+
+export default {
+  insertAnnouncement,
+  getAnnouncements,
+  setLuckyNumber,
+  getLuckyNumber,
+  getShortenedLessonsStatus,
+  setShortenedLessonsStatus,
+  sendNotification,
+};

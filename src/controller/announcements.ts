@@ -30,7 +30,13 @@ const insertAnnouncement = (
   if (!content) return res.sendStatus(400);
   Database.insertAnnouncement(content, time)
     .then(() => {
-      res.sendStatus(201);
+      Database.sendNotification("Ogłoszenie", content, "announcementsV2")
+        .then(() => {
+          return res.sendStatus(201);
+        })
+        .catch((error) => {
+          next(error);
+        });
     })
     .catch((error) => {
       next(error);
