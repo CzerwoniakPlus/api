@@ -5,7 +5,7 @@ const getTimetableURL = async (): Promise<string | null> => {
   return new Promise((resolve, reject) => {
     try {
       got(
-        "http://zs1rowecki.pl/index.php?option=com_content&view=article&id=645&Itemid=417"
+        "http://zs1rowecki.pl/index.php?option=com_content&view=article&id=733&Itemid=417"
       ).then((response) => {
         const { JSDOM } = jsdom;
         const dom = new JSDOM(response.body).window.document;
