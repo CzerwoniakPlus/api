@@ -16,14 +16,22 @@ const getNewsFromSchoolWebsite = async () => {
           const newsArrFromFeed = result.feed.entry;
           let newsArr = [];
           for (let news of newsArrFromFeed) {
-            const cleanContent = sanitizeHtml(news.content[0]._, {
-              allowedTags: [],
-            }).replace(/(\r\n|\n|\r)/gm, " ");
-            newsArr.push({
-              title: news.title[0],
-              content: cleanContent,
-              link: news.id[0],
-            });
+            if (!news.content) {
+              newsArr.push({
+                title: news.title[0],
+                content: news.title[0],
+                link: news.id[0],
+              });
+            } else {
+              const cleanContent = sanitizeHtml(news.content[0]._, {
+                allowedTags: [],
+              }).replace(/(\r\n|\n|\r)/gm, " ");
+              newsArr.push({
+                title: news.title[0],
+                content: cleanContent,
+                link: news.id[0],
+              });
+            }
           }
           resolve(newsArr);
         }
