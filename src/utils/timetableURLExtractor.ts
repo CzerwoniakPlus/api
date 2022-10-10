@@ -1,27 +1,25 @@
 import got from "got";
-import jsdom from "jsdom";
+import {JSDOM} from "jsdom";
 
 const getTimetableURL = async (): Promise<string | null> => {
-  return new Promise((resolve, reject) => {
-    try {
-      got(
-        "http://zs1rowecki.pl/index.php?option=com_content&view=article&id=733&Itemid=417"
-      ).then((response) => {
-        const { JSDOM } = jsdom;
-        const dom = new JSDOM(response.body).window.document;
-        const timetableURL = dom
-          .querySelector("div.item-page")
-          ?.querySelector("p")
-          ?.querySelector("a")?.href;
-        if (timetableURL) {
-          resolve(`http://zs1rowecki.pl/${timetableURL}`);
-        } else {
-          resolve(null);
-        }
-      });
-    } catch (ex) {
-      console.log(ex);
-      resolve(null);
+  return new Promise(async (resolve, reject) => {
+    const homePage = await got('http://zs1rowecki.pl');
+    const homePageDocument = new JSDOM(homePage.body).window.document;
+    const timetablePageURL = homePageDocument
+      .querySelector('li.item-417')
+      ?.querySelector('a')?.href;
+    if (timetablePageURL) {
+      const timetablePage = await got(
+        `http://zs1rowecki.pl/${timetablePageURL}`,
+      );
+      const timetablePageDocument = new JSDOM(timetablePage.body).window
+        .document;
+      const timetableURL = timetablePageDocument
+        .querySelector('div.item-page')
+        ?.querySelector('p')
+        ?.querySelector('a')?.href;
+      if (!timetableURL) throw new Error('Timetable URL not found');
+      resolve(`http://zs1rowecki.pl/${timetableURL}`);
     }
   });
 };

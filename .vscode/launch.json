@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug API in Node.js",
+        "preLaunchTask": "npm: build",
+        "program": "${workspaceFolder}/src/app.ts",
+        "protocol": "inspector",
+        "outFiles": ["${workspaceFolder}/build/**/*.js"],
+        "sourceMaps": true,
+        "smartStep": true,
+        "internalConsoleOptions": "openOnSessionStart"
+      }
+    ]
+  }
+  
