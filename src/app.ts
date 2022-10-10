@@ -13,7 +13,6 @@ import cron from "node-cron";
 import bodyParser from "body-parser";
 import routes from "./routes";
 import refreshNews from "./utils/newsDownloader";
-import getTimetableURL from "./utils/timetableURLExtractor";
 
 dotenv.config();
 
@@ -29,10 +28,11 @@ const CERTIFICATE: Buffer = fs.readFileSync("./config/keys/certificate.pem");
 /**
  *  App Configuration
  */
+app.use(bodyParser.json({ limit: '5mb'}));
+app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }))
 app.use(helmet());
 app.use(cors({ origin: "*" }));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("combined"));
 app.set("trust proxy", true);
 
