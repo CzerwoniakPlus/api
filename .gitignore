@@ -110,3 +110,7 @@ config/keys/privatekey.pem
 
 # TS Build files
 build/
+
+# JSON files that vary
+json/news.json
+json/timetables.json
