@@ -18,7 +18,7 @@ const insertTimetables = async (
 ) => {
   const body = req.body;
   const authSecret = req.header("Auth-Secret");
-  if (authSecret !== process.env.AUTH_SECRET) return res.sendStatus(401);
+  if (authSecret !== process.env.auth_secret) return res.sendStatus(401);
   if (!body) return res.sendStatus(400);
   const timetablesObject: {[index: string]: string} = body;
   let index = 0;
