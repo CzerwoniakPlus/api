@@ -112,9 +112,9 @@ async function getCurrentLesson() {
         ) {
           resolve(countDuration("Lekcja", 8, now, lesson8Start, lesson8End, isShortLessons, lesson1Start));
         } else if (now.isBetween(lesson8End, lesson9Start)) {
-          countDuration("Przerwa", 8, now, lesson8End, lesson9Start, isShortLessons, lesson1Start)
+          resolve(countDuration("Przerwa", 8, now, lesson8End, lesson9Start, isShortLessons, lesson1Start))
         } else if (now.isBetween(lesson9Start, lesson9End) || now.isSame(lesson9Start) || now.isSame(lesson9End)) {
-          countDuration("Lekcja", 9, now, lesson9Start, lesson9End, isShortLessons, lesson1Start)
+         resolve(countDuration("Lekcja", 9, now, lesson9Start, lesson9End, isShortLessons, lesson1Start))
         }
         else if (now.isAfter(lesson9End) && now.isBefore(night)) {
           resolve({ type: "afternoon", isShortLessons: isShortLessons });
