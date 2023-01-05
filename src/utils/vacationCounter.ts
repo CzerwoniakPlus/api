@@ -31,19 +31,35 @@ const calculateVacation = () => {
   if (now.month() === 6 || now.month() === 7) {
     return { daysTotal: 0, daysLeft: 0, procent: 1 };
   }
-  const start = moment().year(now.year()).month(8).date(1).day(8);
-  if (start.date() > 7) start.day(-6);
-  const end = calculateLastFridayForMonth(
-    moment()
-      .year(now.year() + 1)
-      .month(5)
-  );
+  if (now.month() <= 5) {
+    const start = moment()
+      .year(now.year() - 1)
+      .month(8)
+      .date(1)
+      .day(8);
+    if (start.date() > 7) start.day(-6);
+    const end = calculateLastFridayForMonth(moment().year(now.year()).month(5));
 
-  const daysTotal = end.diff(start, "days");
-  const daysLeft = end.diff(now, "days") + 1;
-  const procent = 1 - daysLeft / daysTotal;
+    const daysTotal = end.diff(start, "days");
+    const daysLeft = end.diff(now, "days") + 1;
+    const procent = 1 - daysLeft / daysTotal;
 
-  return { daysTotal: daysTotal, daysLeft: daysLeft, procent: procent };
+    return { daysTotal: daysTotal, daysLeft: daysLeft, procent: procent };
+  } else {
+    const start = moment().year(now.year()).month(8).date(1).day(8);
+    if (start.date() > 7) start.day(-6);
+    const end = calculateLastFridayForMonth(
+      moment()
+        .year(now.year() + 1)
+        .month(5)
+    );
+
+    const daysTotal = end.diff(start, "days");
+    const daysLeft = end.diff(now, "days") + 1;
+    const procent = 1 - daysLeft / daysTotal;
+
+    return { daysTotal: daysTotal, daysLeft: daysLeft, procent: procent };
+  }
 };
 
 export default calculateVacation;
